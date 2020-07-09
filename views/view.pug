@@ -1,0 +1,10 @@
+extends header.pug
+block header
+	h3 View User #{users.name}
+	.input-group.mb-3
+		.input-group-prepend
+			span.input-group-text ID
+			input.form-control(type='text', value=""+users.id)
+		.input-group-prepend
+			span.input-group-text NAME
+			input.form-control(type='text',  value=""+users.name)

@@ -1,0 +1,15 @@
+extends ../header.pug
+block header
+  .wrapper.fadeInDown
+    #formContent
+      .fadeIn.first
+        img#icon(src='http://danielzawadzki.com/codepen/01/icon.svg', alt='User Icon')
+      form(method = "POST")
+        input#login.fadeIn.second(type='text', name='id', placeholder='login', value=values ? values.id : '')
+        input#password.fadeIn.third(type='password', name='pass', placeholder='password', value=values ? values.pass : '')
+        input.fadeIn.fourth(type='submit', value='Log In')
+      #formFooter
+        a.underlineHover(href='#') Forgot Password?
+    if errors
+      each er in errors
+        .alert.alert-danger= er

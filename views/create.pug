@@ -1,0 +1,16 @@
+extends header.pug
+block header
+		h3 Creat New User
+		form.form-inline.my-2.my-lg-0(method="POST", action="/create")
+			.input-group.mb-3
+				.input-group-prepend
+					span.input-group-text ID
+					input.form-control(type='text', name="id", value=value ? value.id : '')
+
+				.input-group-prepend
+					span.input-group-text NAME
+					input.form-control(type='text', name="name" value=value ? value.name : '')
+				button.btn.btn-outline-danger.my-2.my-sm-0 Creat
+		if err
+			each er in err
+				.alert.alert-danger= er

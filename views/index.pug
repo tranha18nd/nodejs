@@ -1,0 +1,20 @@
+extends header.pug
+block header
+	h3 List User
+	form.form-inline.my-2.my-lg-0(method="GET", action="/search")
+		input.form-control.mr-sm-2(type="text", name="name", value=""+name)
+		button.btn.btn-outline-danger.my-2.my-sm-0 search
+	table.table.table-bordered
+		thead
+			tr
+				th ID
+				th NAME
+				th Action
+		tbody
+			each user in users
+				tr
+					td= user.id
+					td= user.name
+					td
+						a(href='/view/'+user.id) View
+
