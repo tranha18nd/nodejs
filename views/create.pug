@@ -1,7 +1,7 @@
 extends header.pug
 block header
 		h3 Creat New User
-		form.form-inline.my-2.my-lg-0(method="POST", action="/create")
+		form.form-inline.my-2.my-lg-0(method="POST", action="/create" enctype="multipart/form-data")
 			.input-group.mb-3
 				.input-group-prepend
 					span.input-group-text ID
@@ -10,6 +10,8 @@ block header
 				.input-group-prepend
 					span.input-group-text NAME
 					input.form-control(type='text', name="name" value=value ? value.name : '')
+					span.input-group-text Avatar
+					input.form-control(type='file', name="avatar" value=value ? value.avatar : '')
 				button.btn.btn-outline-danger.my-2.my-sm-0 Creat
 		if err
 			each er in err

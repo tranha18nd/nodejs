@@ -26,7 +26,7 @@ module.exports.search = function(req,res){
 		});
 	}};
 module.exports.pushCreat = function(req,res){
-
+	req.body.avatar = req.file.path.split('\\').slice(1).join('/');
 	db.get('users').push(req.body).write();
 	res.redirect('/');
 	// console.log(err);

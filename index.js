@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var routerUser = require('./route/user.js');
 var cookieParser = require('cookie-parser');
