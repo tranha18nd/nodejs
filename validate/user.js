@@ -1,5 +1,6 @@
 var db = require('../db');
 var md5 = require('md5');
+var shortid = require('shortid');
 module.exports.postCreat = function(req,res,next){
 	var err = [];
 	if(!req.body.name){
@@ -31,6 +32,19 @@ module.exports.requiredAuth = function(req, res, next){
 	if(!user){
 		res.redirect('auth/login');
 		return;
+	}
+	next();
+}
+
+module.exports.sessionMiddleware = function(req, res, next){
+	if(!req.signedCookies.sessionId){
+		var sessionId = shortid.generate();
+		res.cookie('sessionId', sessionId, {
+			signed: true
+		});
+		db.get('sessions').push({
+			id:sessionId
+		}).write();
 	}
 	next();
 }
